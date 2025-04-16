@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MyClinic.Windows;
 namespace MyClinic.Pages
+
 {
     /// <summary>
     /// Логика взаимодействия для DoctorPriem.xaml
@@ -23,37 +24,41 @@ namespace MyClinic.Pages
     {
      
         public static List<Reception> receptions { get; set; }
+        public static List<Animals> animals { get; set; }
     
         public DoctorPriem()
         {
             InitializeComponent();
         
-            receptions = new List<Reception>(DbVetClinica.vet.Reception.ToList());
-            this.DataContext = receptions;
+            receptions = new List<Reception>(DbVetClinica.vet.Reception.Where(i=>i.IsDelete==false).ToList());
+            this.DataContext = this;
             
         }
-
-
-
-
 
         private void FiltrDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             {
 
-                var t = FiltrDate.SelectedItem as Reception;
-
-                if (t.Id != -1)
-                    DoctorsLv.ItemsSource = receptions.Where(i => i.Id_Doctor == t.Id).ToList();
-                else
-                    DoctorsLv.ItemsSource = receptions.ToList();
+                
+                
 
             }
         }
 
         private void AddPriem_Click(object sender, RoutedEventArgs e)
         {
-
+           AddPriem addPriem = new AddPriem();
+            addPriem.Show();
         }
+
+        private void TicketSearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string search = TicketSearchTb.Text.Trim();
+            if (search == " ")
+                DoctorsLv.ItemsSource = receptions.ToList();
+            else
+                DoctorsLv.ItemsSource = receptions.Where(i => i.Animals.clinic.ToString() == search).ToList();
+        }
+       
     }
 }

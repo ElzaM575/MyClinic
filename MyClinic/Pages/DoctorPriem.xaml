@@ -29,10 +29,10 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView Grid.ColumnSpan="6"
+        <ListView Grid.ColumnSpan="4"
                   Grid.RowSpan="8"
                   Name="DoctorsLv"
-                  ItemsSource="{Binding receptions }">
+                  ItemsSource="{Binding receptions}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -43,35 +43,26 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="ФИО врача" Width="150">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Doctor.Name}"/>
-                                        <TextBlock Text="{Binding Doctor.SerName}"/>
-                                        <TextBlock Text="{Binding Doctor.LastName}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
                         <GridViewColumn Header="Дата приема" Width="110">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Data_admission, StringFormat=dd.MM.yyyy}"/>
+                                    <TextBlock Text="{Binding Date_admission, StringFormat=dd.MM.yyyy}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Животное" Width="120">
+
+                        <GridViewColumn Header="Кличка" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Id_Animals}"/>
+                                    <TextBlock Text="{Binding Animals.clinic}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+
                         <GridViewColumn Header="Коментарий" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding comment}"/>
+                                    <TextBlock Text="{Binding Comment}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -82,24 +73,28 @@
         </ListView>
         <TextBox Grid.Column="6"
                  Grid.ColumnSpan="2"
-                 Grid.Row="1"
                  Height="25"
                  Width="180"
                  Name="TicketSearchTb"
-                
-                 VerticalAlignment="Top"
-                 Padding="2 0 0 0" />
+                 VerticalAlignment="Bottom"
+                 Padding="2 0 0 0" Margin="10,0,10,32" Grid.RowSpan="2" TextChanged="TicketSearchTb_TextChanged" />
         <TextBlock Text="Поиск животного по кличке"
                    Grid.Column="6"
                    Grid.ColumnSpan="2"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"
                    Margin=" 0 0 0 5"/>
+        <TextBlock Text="Фильтрация по дате"
+            Grid.Column="4"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin=" 0 0 0 5"/>
         <ComboBox Name="FiltrDate"
                   ItemsSource="{Binding receptions}"
                  SelectionChanged="FiltrDate_SelectionChanged"
-                  Grid.Column="6"
-                  Grid.Row="3"
+                  Grid.Column="4"
+                  Grid.Row="1"
                   Grid.ColumnSpan="2"
                   Margin="10">
             <ComboBox.ItemTemplate>
@@ -114,7 +109,7 @@
         </ComboBox>
         <Button x:Name="AddPriem"
                 Content="Создать новый прием"
-                Grid.Column="6"
+                Grid.Column="4"
                 Grid.ColumnSpan="2"
                 Grid.Row="5" Click="AddPriem_Click"
              />

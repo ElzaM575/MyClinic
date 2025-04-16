@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyClinic.Connection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace MyClinic.Pages
 
         private void ZarBtn_Click(object sender, RoutedEventArgs e)
         {
-
+          
         }
     }
 }
