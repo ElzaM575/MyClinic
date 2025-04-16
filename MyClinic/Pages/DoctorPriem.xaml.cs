@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MyClinic.Windows;
+using System.Runtime.Remoting.Messaging;
 namespace MyClinic.Pages
 
 {
@@ -39,9 +40,6 @@ namespace MyClinic.Pages
         {
             {
 
-                
-                
-
             }
         }
 
@@ -59,6 +57,7 @@ namespace MyClinic.Pages
             else
                 DoctorsLv.ItemsSource = receptions.Where(i => i.Animals.clinic.ToString() == search).ToList();
         }
-       
+
+        
     }
 }

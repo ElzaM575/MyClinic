@@ -15,11 +15,11 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-      
+
             <RowDefinition/>
             <RowDefinition/>
-           
-          
+
+
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -43,12 +43,17 @@
                  Grid.ColumnSpan="2"
                  Height="35"
                  Width="200"/>
-        <TextBox x:Name="VesTb"
-          Grid.Column="2"
-          Grid.Row="1"
-          Grid.ColumnSpan="2"
-          Height="35"
-          Width="200"/>
+        <ComboBox Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  Width="200"
+                  FontSize="16"
+                  Grid.Column="2"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Left"
+                  Margin="86,0,0,0"
+                  Height="40"
+                  ItemsSource="{Binding animalsList}"
+                  Name="AuthorCm" SelectionChanged="AuthorCm_SelectionChanged"/>
         <TextBlock Text="Коментарий"
 Grid.ColumnSpan="2"
 Grid.Row="2"
@@ -69,5 +74,13 @@ Margin="0 0 5 0"/>
                 Grid.ColumnSpan="2"
                 Grid.Row="7"
                 FontSize="18" Click="SavePriemBtn_Click"/>
+        <Button x:Name="AddClBtn"
+         Content="добавить жиотное"
+       Margin=" 30"
+                
+         Grid.Column="0"
+         
+         Grid.Row="1"
+         FontSize="18" Click="AddClBtn_Click" />
     </Grid>
 </Window>

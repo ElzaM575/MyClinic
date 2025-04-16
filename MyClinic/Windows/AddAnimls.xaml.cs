@@ -11,22 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MyClinic.Connection;
 
 namespace MyClinic.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddAnimals.xaml
+    /// Логика взаимодействия для AddAnimls.xaml
     /// </summary>
-    public partial class AddAnimals : Window
+    public partial class AddAnimls : Window
     {
-        public AddAnimals()
+        public static List<Animals> animals { get; set; }
+        public AddAnimls()
         {
             InitializeComponent();
-        }
-
-        private void SaveAnimalsBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            animals = new List<Animals>(DbVetClinica.vet.Animals.ToList());
+            this.DataContext = this;
         }
     }
 }

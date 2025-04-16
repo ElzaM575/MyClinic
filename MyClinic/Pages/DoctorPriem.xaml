@@ -116,9 +116,23 @@
                 Content="Создать новый прием"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                
+                Margin="10"
                 Grid.Row="7" Click="AddPriem_Click"
              />
+        <Button x:Name="DeletePriem"
+          Content="Удалить прием"
+          Grid.Column="2"
+          Grid.ColumnSpan="1"
+          Margin="10"
+          Grid.Row="7" Click="AddPriem_Click"
+       />
+        <Button x:Name="UpdatePriem"
+        Content="Обновить"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        
+        Grid.Row="8" 
+     />
 
     </Grid>
 </Page>
