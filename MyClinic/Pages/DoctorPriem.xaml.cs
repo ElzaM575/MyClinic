@@ -30,23 +30,30 @@ namespace MyClinic.Pages
         public DoctorPriem()
         {
             InitializeComponent();
-        
+
             receptions = new List<Reception>(DbVetClinica.vet.Reception.Where(i=>i.IsDelete==false).ToList());
             this.DataContext = this;
 
         }
-
+      
         private void FiltrDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            {
 
-            }
+            var t = FiltrDate.SelectedItem as Reception;
+
+            if (t != null)
+                DoctorsLv.ItemsSource = receptions.Where(i => i.Date_admission == t.Date_admission
+                ).ToList();
+            else
+                DoctorsLv.ItemsSource = receptions.ToList();
+
         }
 
         private void AddPriem_Click(object sender, RoutedEventArgs e)
         {
            AddPriem addPriem = new AddPriem();
             addPriem.Show();
+            
         }
 
         private void TicketSearchTb_TextChanged(object sender, TextChangedEventArgs e)
@@ -58,6 +65,9 @@ namespace MyClinic.Pages
                 DoctorsLv.ItemsSource = receptions.Where(i => i.Animals.clinic.ToString() == search).ToList();
         }
 
-        
+        private void DeletePriem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

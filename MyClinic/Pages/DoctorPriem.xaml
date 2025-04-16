@@ -105,9 +105,9 @@
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Lastname}"/>
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding Patronymic}"/>
+                        <TextBlock Text="{Binding Date_admission}"/>
+                       
+                       
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
@@ -124,7 +124,7 @@
           Grid.Column="2"
           Grid.ColumnSpan="1"
           Margin="10"
-          Grid.Row="7" Click="AddPriem_Click"
+          Grid.Row="7" Click="DeletePriem_Click" 
        />
         <Button x:Name="UpdatePriem"
         Content="Обновить"

@@ -106,6 +106,9 @@
     <Compile Include="Pages\DoctorPriem.xaml.cs">
       <DependentUpon>DoctorPriem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddAnimals1.xaml.cs">
+      <DependentUpon>AddAnimals1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddAnimls.xaml.cs">
       <DependentUpon>AddAnimls.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DoctorPriem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddAnimals1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

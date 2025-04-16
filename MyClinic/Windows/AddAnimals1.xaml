@@ -1,0 +1,165 @@
+﻿<Window x:Class="MyClinic.Windows.AddAnimals1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyClinic.Windows"
+        mc:Ignorable="d"
+        Title="AddAnimals1" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Кличка"
+                   FontSize="18"
+                   HorizontalAlignment="Left"
+                   Margin="20 0 0 0"
+                   VerticalAlignment="Center"
+                   Grid.ColumnSpan="3"/>
+        <TextBox Grid.Row="1"
+                 Grid.ColumnSpan="2"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Margin="20 0 0 0"
+                 Name="СlinicTb"
+                 Height="35"
+                 FontSize="16"
+                 VerticalContentAlignment="Center"
+                 Width="200"/>
+        <TextBlock Text="Пол"
+                   FontSize="18"
+                   HorizontalAlignment="Left"
+                   Margin="20 0 0 0"
+                   VerticalAlignment="Center"
+                   Grid.Row="2"
+                   Grid.ColumnSpan="3"/>
+        <ComboBox Grid.Row="3"
+                  Grid.ColumnSpan="2"
+                  Width="200"
+                  FontSize="16"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="20 0 0 0"
+                  Height="40"
+                  ItemsSource="{Binding genders}"
+                  Name="PolCm">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                      
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+       
+        <Button x:Name="UpdateBookBtn"
+               
+                Grid.ColumnSpan="2"
+                Grid.Column="2"
+                Grid.Row="3"
+                Height="30"
+                Width="50"
+                VerticalAlignment="Top"
+                Margin="0 0 30 0"
+                Content="upd" />
+        <TextBlock Text="Рост"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="6"
+                   HorizontalAlignment="Left"
+                   Margin="20 0 0 0"
+                   VerticalAlignment="Center"
+                   FontSize="18"/>
+        <ComboBox Grid.Row="7"
+                  Grid.ColumnSpan="2"
+                  Width="200"
+                  Height="40"
+                  FontSize="16"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="20 0 0 0"
+                  ItemsSource="{Binding animals }"
+                  Name="RostCm">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Height}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="Вид"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   FontSize="18"
+                   HorizontalAlignment="Left"
+                   Margin="20 0 0 0"
+                   VerticalAlignment="Center"
+                   Grid.ColumnSpan="2"/>
+        <ComboBox Grid.Row="1"
+                  Grid.Column="3"
+                  Grid.ColumnSpan="2"
+                  Width="200"
+                  Height="40"
+                  FontSize="16"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="20 0 0 0"
+                  ItemsSource="{Binding type_Animals}"
+                  Name="VidCm">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+      
+        <TextBlock Text="Вес"
+                   Grid.Row="4"
+                   Grid.Column="3"
+                   FontSize="18"
+                   HorizontalAlignment="Left"
+                   Margin="20 0 0 0"
+                   VerticalAlignment="Center"
+                   Grid.ColumnSpan="2"/>
+        <ComboBox Grid.Row="5"
+                  Grid.Column="3"
+                  Grid.ColumnSpan="2"
+                  Width="200"
+                  Height="40"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="20 0 0 0"
+                  FontSize="16"
+                  ItemsSource="{Binding animals}"
+                  Name="VesCm">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Whole}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button x:Name="SaveBook"
+              
+                Content="Сохранить"
+                Grid.Column="3"
+                Grid.ColumnSpan="2"
+                Grid.Row="7"
+                Height="40"
+                Width="100"
+                FontSize="16" Click="SaveBook_Click"/>
+    </Grid>
+</Window>

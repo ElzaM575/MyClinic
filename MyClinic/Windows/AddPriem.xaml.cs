@@ -20,11 +20,13 @@ namespace MyClinic.Windows
     /// </summary>
     public partial class AddPriem : Window
     {
-        private List<Animals> animalsList;
+        public static List<Animals> animals { get; set; }
+        public static List<Reception> receptions { get; set; }
         public AddPriem()
         {
             InitializeComponent();
-             animalsList= new List<Animals>(DbVetClinica.vet.Animals.ToList());
+             animals= new List<Animals>(DbVetClinica.vet.Animals.ToList());
+            receptions = new List<Reception>(DbVetClinica.vet.Reception.Where(i => i.IsDelete == false).ToList());
             this.DataContext = this;
         }
 
@@ -52,7 +54,7 @@ namespace MyClinic.Windows
 
         private void AddClBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddAnimls addAuthorWindow = new AddAnimls();
+            AddAnimals1 addAuthorWindow = new AddAnimals1();
             addAuthorWindow.Show();
         }
     }
