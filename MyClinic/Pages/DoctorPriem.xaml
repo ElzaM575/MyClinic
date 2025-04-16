@@ -15,9 +15,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -26,11 +23,16 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+           
+            
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView Grid.ColumnSpan="4"
-                  Grid.RowSpan="8"
+        <ListView Grid.RowSpan="4"
+                  Grid.Column="0"
+                  Grid.Row="2"
+                  Grid.ColumnSpan="5"
                   Name="DoctorsLv"
                   ItemsSource="{Binding receptions}">
             <ListView.View>
@@ -71,19 +73,22 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Grid.Column="6"
+        <TextBox
+            Grid.Column="0"
                  Grid.ColumnSpan="2"
-                 Height="25"
-                 Width="180"
+                 Height="40"
+                 Width="200"
                  Name="TicketSearchTb"
                  VerticalAlignment="Bottom"
-                 Padding="2 0 0 0" Margin="10,0,10,32" Grid.RowSpan="2" TextChanged="TicketSearchTb_TextChanged" />
+            Padding="0 0 5 0 "
+                Margin="10" TextChanged="TicketSearchTb_TextChanged" Grid.Row="1" />
         <TextBlock Text="Поиск животного по кличке"
-                   Grid.Column="6"
+                   Grid.Column="0"
                    Grid.ColumnSpan="2"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"
-                   Margin=" 0 0 0 5"/>
+                   Padding=" 0 0 5 0"
+                   Margin=" 10 10 0 0"/>
         <TextBlock Text="Фильтрация по дате"
             Grid.Column="4"
             Grid.ColumnSpan="2"
@@ -109,9 +114,10 @@
         </ComboBox>
         <Button x:Name="AddPriem"
                 Content="Создать новый прием"
-                Grid.Column="4"
+                Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Grid.Row="5" Click="AddPriem_Click"
+                
+                Grid.Row="7" Click="AddPriem_Click"
              />
 
     </Grid>

@@ -32,7 +32,7 @@ namespace MyClinic.Pages
         
             receptions = new List<Reception>(DbVetClinica.vet.Reception.Where(i=>i.IsDelete==false).ToList());
             this.DataContext = this;
-            
+
         }
 
         private void FiltrDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
