@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="354f51a385f047498b6553ca08bee18a" Name="Diagram1">
+        <EntityTypeShape EntityType="VetClinicaModel.Animals" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VetClinicaModel.Doctor" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VetClinicaModel.Gender" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VetClinicaModel.Reception" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VetClinicaModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VetClinicaModel.Type_Animals" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VetClinicaModel.Type_Doctor" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="VetClinicaModel.FK_Animals_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="VetClinicaModel.FK_Animals_Type_Animals" ManuallyRouted="false" />
+        <AssociationConnector Association="VetClinicaModel.FK_Reception_Animals" ManuallyRouted="false" />
+        <AssociationConnector Association="VetClinicaModel.FK_Doctor_Type_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="VetClinicaModel.FK_Reception_Doctor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
