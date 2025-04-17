@@ -23,8 +23,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-           
-            
+
+
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -52,7 +52,6 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
                         <GridViewColumn Header="Кличка" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -60,7 +59,6 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
                         <GridViewColumn Header="Коментарий" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -105,13 +103,17 @@
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Date_admission}"/>
-                       
-                       
+                        <TextBlock Text="{Binding StringFormat=dd.MM.yyyy}"/>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <!-- Кнопка сброса фильтра -->
+        <Button Content="Сбросить фильтр"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            Margin="10,10,10,10"
+            Click="ResetFilter_Click" Grid.Row="1"/>
         <Button x:Name="AddPriem"
                 Content="Создать новый прием"
                 Grid.Column="0"
@@ -119,19 +121,20 @@
                 Margin="10"
                 Grid.Row="7" Click="AddPriem_Click"
              />
-        <Button x:Name="DeletePriem"
-          Content="Удалить прием"
-          Grid.Column="2"
-          Grid.ColumnSpan="1"
-          Margin="10"
-          Grid.Row="7" Click="DeletePriem_Click" 
-       />
+        
+        <Button x:Name="DPriem"
+    Content="Восстановить прием"
+    Grid.Column="3"
+    Grid.ColumnSpan="1"
+    Margin="10,5,10,15"
+    Grid.Row="7" Click="DPriem_Click" 
+ />
         <Button x:Name="UpdatePriem"
         Content="Обновить"
         Grid.Column="0"
         Grid.ColumnSpan="2"
         
-        Grid.Row="8" 
+        Grid.Row="8" Click="UpdatePriem_Click" 
      />
 
     </Grid>

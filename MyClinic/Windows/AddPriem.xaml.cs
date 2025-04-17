@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,17 +33,17 @@ namespace MyClinic.Windows
 
         private void SavePriemBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             Reception res = new Reception();
             res.Date_admission = DateDp.SelectedDate;
+
             Animals animals = new Animals();
-            animals.clinic = AuthorCm.Text.Trim();
+            animals.clinic = ClCm.Text.Trim();
             res.Comment = KomTb.Text.Trim();
-            //reader.Birthdate = BirthDateDp.SelectedDate;
-            //reader.Phone = PhoneTb.Text.Trim();
             res.IsDelete = false;
             DbVetClinica.vet.Reception.Add(res);
             DbVetClinica.vet.SaveChanges();
-            //Connection.biblioteq.SaveChanges();
+       
             MessageBox.Show("Прием успешно добавлен.");
             Close();
         }
@@ -56,6 +57,12 @@ namespace MyClinic.Windows
         {
             AddAnimals1 addAuthorWindow = new AddAnimals1();
             addAuthorWindow.Show();
+        }
+
+        private void UddClBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClCm.ItemsSource = new List<Animals>(DbVetClinica.vet.Animals.ToList());
+          
         }
     }
 }

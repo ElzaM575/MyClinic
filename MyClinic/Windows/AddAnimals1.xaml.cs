@@ -41,15 +41,16 @@ namespace MyClinic.Windows
         {
             Animals book = new Animals();
             if (СlinicTb.Text != null && PolCm.SelectedItem != null &&
-                RostCm.SelectedItem != null && VidCm.SelectedItem != null &&
-                VesCm.SelectedItem != null  
+                RostTb.Text != null && VidCm.SelectedItem != null &&
+                VesTb.Text != null  
                    )
             {
+             
                 book.clinic = (СlinicTb.Text.Trim());
                 book.Id_Gender = (PolCm.SelectedItem as Gender).Id;
                 book.Id_TypeG = (VidCm.SelectedItem as Type_Animals).Id;
-                book.Whole = (VesCm.SelectedItem as Animals).Whole;
-                book.Height = (RostCm.SelectedItem as Animals).Height;
+                book.Whole = (VesTb.Text.Trim());
+                book.Height = (RostTb.Text.Trim());
                 
                 DbVetClinica.vet.Animals.Add(book);
                 DbVetClinica.vet.SaveChanges();

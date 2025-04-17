@@ -30,22 +30,29 @@ namespace MyClinic.Pages
         public DoctorPriem()
         {
             InitializeComponent();
-
+            animals= new List<Animals>(DbVetClinica.vet.Animals.ToList());
             receptions = new List<Reception>(DbVetClinica.vet.Reception.Where(i=>i.IsDelete==false).ToList());
             this.DataContext = this;
-
+            FiltrDate.ItemsSource = receptions
+          .Select(r => r.Date_admission)
+          .Distinct()
+          .OrderBy(d => d)
+          .ToList();
         }
       
         private void FiltrDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            var t = FiltrDate.SelectedItem as Reception;
-
-            if (t != null)
-                DoctorsLv.ItemsSource = receptions.Where(i => i.Date_admission == t.Date_admission
-                ).ToList();
+            if (FiltrDate.SelectedItem is DateTime selectedDate)
+            {
+                DoctorsLv.ItemsSource = receptions
+                    .Where(i => i.Date_admission == selectedDate.Date)
+                    .ToList();
+            }
             else
+            {
                 DoctorsLv.ItemsSource = receptions.ToList();
+            }
 
         }
 
@@ -65,9 +72,44 @@ namespace MyClinic.Pages
                 DoctorsLv.ItemsSource = receptions.Where(i => i.Animals.clinic.ToString() == search).ToList();
         }
 
-        private void DeletePriem_Click(object sender, RoutedEventArgs e)
+        
+        private void UpdatePriem_Click(object sender, RoutedEventArgs e)
+        {
+            
+            receptions = DbVetClinica.vet.Reception.Where(i => i.IsDelete == false).ToList();
+            DoctorsLv.ItemsSource = receptions;
+
+        }
+
+        private void ResetFilter_Click(object sender, RoutedEventArgs e)
         {
 
+            FiltrDate.SelectedItem = null;
+            DoctorsLv.ItemsSource = receptions.ToList();
+        }
+        private Reception _lastDeletedReception;
+        private void DPriem_Click(object sender, RoutedEventArgs e)
+        {
+            if (_lastDeletedReception != null)
+            {
+                try
+                {
+                    // Восстанавливаем прием
+                    DbVetClinica.vet.Reception.Add(_lastDeletedReception);
+                    DbVetClinica.vet.SaveChanges();
+
+                    // Обновляем список
+                    UpdatePriem_Click(null, null);
+
+                  
+
+                    MessageBox.Show("Удаление отменено. Прием восстановлен.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при отмене удаления: {ex.Message}");
+                }
+            }
         }
     }
 }

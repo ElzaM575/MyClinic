@@ -15,72 +15,82 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-
             <RowDefinition/>
             <RowDefinition/>
-
-
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Дата приема"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="1"
             Grid.Row="0"
             FontSize="18"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="0 0 5 0"/>
-        <TextBlock Text="Кличка"
-      Grid.ColumnSpan="2"
-      Grid.Row="1"
+        <Label Content="Кличка" Grid.Column="0"
       FontSize="18"
-      VerticalAlignment="Center"
+      VerticalAlignment="Top"
       HorizontalAlignment="Right"
-      Margin="0 0 5 0"/>
+      Margin="0,48,101,0" Grid.RowSpan="2"/>
         <DatePicker x:Name="DateDp"
-                 Grid.Column="2"
+                 Grid.Column="1"
                  Grid.Row="0"
                  Grid.ColumnSpan="2"
                  Height="35"
-                 Width="200"/>
+                 Width="400"/>
         <ComboBox Grid.Row="1"
-                  Grid.ColumnSpan="2"
-                  Width="200"
-                  FontSize="16"
-                  Grid.Column="2"
-                  VerticalAlignment="Center"
-                  HorizontalAlignment="Left"
-                  Margin="86,0,0,0"
-                  Height="40"
-                  ItemsSource="{Binding animalsList}"
-                  Name="AuthorCm" SelectionChanged="AuthorCm_SelectionChanged"/>
+                  Grid.Column="0"
+           
+           Width="559"
+           FontSize="16"
+                 
+           HorizontalAlignment="Left"
+           Margin="30,20,0,2"
+           Height="40"
+           ItemsSource="{Binding animals}"
+           Name="ClCm" Grid.ColumnSpan="3">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding clinic}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBlock Text="Коментарий"
-Grid.ColumnSpan="2"
 Grid.Row="2"
 FontSize="18"
-VerticalAlignment="Center"
+VerticalAlignment="Top"
 HorizontalAlignment="Right"
-Margin="0 0 5 0"/>
+Margin="0,10,68,0"/>
         <TextBox x:Name="KomTb"
-    Grid.Column="2"
     Grid.Row="2"
-    Grid.ColumnSpan="2"
-    Height="35"
-    Width="200"/>
+    Grid.ColumnSpan="3"
+    Height="60" Margin="31,39,10,50" Grid.RowSpan="2"/>
         <Button x:Name="SavePriemBtn"
                 Content="Добавить прием"
-              Margin=" 30"
+              Margin="10"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Grid.Row="7"
+                
                 FontSize="18" Click="SavePriemBtn_Click"/>
         <Button x:Name="AddClBtn"
          Content="добавить жиотное"
-       Margin=" 30"
-                
+       Margin="142,10,39,10"
          Grid.Column="0"
          
-         Grid.Row="1"
-         FontSize="18" Click="AddClBtn_Click" />
+         Grid.Row="4"
+         FontSize="18" Click="AddClBtn_Click" Grid.ColumnSpan="2" />
+        <Button x:Name="UddClBtn"
+  Content="Обновить"
+Margin="35,10,146,10"
+  Grid.Column="2"
+  
+  Grid.Row="4"
+  FontSize="18" Click="UddClBtn_Click" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

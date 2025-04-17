@@ -109,11 +109,11 @@
     <Compile Include="Windows\AddAnimals1.xaml.cs">
       <DependentUpon>AddAnimals1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AddAnimls.xaml.cs">
-      <DependentUpon>AddAnimls.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\AddPriem.xaml.cs">
       <DependentUpon>AddPriem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditPriemBtn.xaml.cs">
+      <DependentUpon>EditPriemBtn.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -140,11 +140,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddAnimls.xaml">
+    <Page Include="Windows\AddPriem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddPriem.xaml">
+    <Page Include="Windows\EditPriemBtn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +184,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Connection\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -194,9 +197,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
