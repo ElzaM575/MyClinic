@@ -38,6 +38,13 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
+                        <GridViewColumn Header="Id Приема " Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Id}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn Header="Id" Width="70">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -121,7 +128,14 @@
                 Margin="10"
                 Grid.Row="7" Click="AddPriem_Click"
              />
-        
+        <Button x:Name="UpPriem"
+          Content="обновить список приемов"
+          Grid.Column="0"
+          Grid.ColumnSpan="2"
+          Margin="10"
+          Grid.Row="8" Click="UpdatePriem_Click"
+       />
+
         <Button x:Name="DPriem"
     Content="Восстановить прием"
     Grid.Column="3"
@@ -129,13 +143,12 @@
     Margin="10,5,10,15"
     Grid.Row="7" Click="DPriem_Click" 
  />
-        <Button x:Name="UpdatePriem"
-        Content="Обновить"
-        Grid.Column="0"
-        Grid.ColumnSpan="2"
-        
-        Grid.Row="8" Click="UpdatePriem_Click" 
-     />
-
+        <Button x:Name="Upriem"
+   Content="Удалить прием"
+   Grid.Column="2"
+   Grid.ColumnSpan="1"
+   Margin="10,5,10,15"
+   Grid.Row="7" Click="Upriem_Click" 
+/>
     </Grid>
 </Page>

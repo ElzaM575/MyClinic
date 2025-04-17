@@ -78,6 +78,8 @@ namespace MyClinic.Pages
             
             receptions = DbVetClinica.vet.Reception.Where(i => i.IsDelete == false).ToList();
             DoctorsLv.ItemsSource = receptions;
+            
+            
 
         }
 
@@ -109,6 +111,50 @@ namespace MyClinic.Pages
                 {
                     MessageBox.Show($"Ошибка при отмене удаления: {ex.Message}");
                 }
+            }
+        }
+
+        private void Upriem_Click(object sender, RoutedEventArgs e)
+        {
+            if (DoctorsLv.SelectedItem is Reception selectedReception)
+            {
+                var result = MessageBox.Show(
+                    $"Вы уверены, что хотите удалить прием от {selectedReception.Date_admission:dd.MM.yyyy}?",
+                    "Подтверждение удаления",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        // Сохраняем удаленный прием для возможного восстановления
+                        _lastDeletedReception = selectedReception;
+
+                        // Вариант 1: Мягкое удаление (рекомендуется)
+                        selectedReception.IsDelete = true;
+
+                        // Вариант 2: Физическое удаление (раскомментировать если нужно)
+                        // DbVetClinica.vet.Reception.Remove(selectedReception);
+
+                        DbVetClinica.vet.SaveChanges();
+                        // Обновляем список
+                        UpdatePriem_Click(null, null);
+
+                        // Показываем кнопку восстановления
+                        DPriem.Visibility = Visibility.Visible;
+
+                        MessageBox.Show("Прием успешно удален. Вы можете восстановить его.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при удалении: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите прием для удаления!");
             }
         }
     }

@@ -37,8 +37,16 @@ namespace MyClinic.Windows
             Reception res = new Reception();
             res.Date_admission = DateDp.SelectedDate;
 
-            Animals animals = new Animals();
-            animals.clinic = ClCm.Text.Trim();
+            if (ClCm.SelectedItem is Animals selectedAnimal)
+            {
+                res.Id = selectedAnimal.Id; // Устанавливаем связь с животным
+                res.Animals = selectedAnimal;     // Навигационное свойство
+            }
+            else
+            {
+                MessageBox.Show("Выберите животное!");
+                return;
+            }
             res.Comment = KomTb.Text.Trim();
             res.IsDelete = false;
             DbVetClinica.vet.Reception.Add(res);
