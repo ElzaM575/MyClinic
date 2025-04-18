@@ -15,6 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MyClinic.Windows;
 using System.Runtime.Remoting.Messaging;
+using System.Data.Entity;
+using System.Collections.ObjectModel;
+
 namespace MyClinic.Pages
 
 {
@@ -23,23 +26,40 @@ namespace MyClinic.Pages
     /// </summary>
     public partial class DoctorPriem : Page
     {
-     
-        public static List<Reception> receptions { get; set; }
+
+        public static ObservableCollection <Reception> receptions { get; set; }
         public static List<Animals> animals { get; set; }
-    
+
+
         public DoctorPriem()
         {
             InitializeComponent();
-            animals= new List<Animals>(DbVetClinica.vet.Animals.ToList());
-            receptions = new List<Reception>(DbVetClinica.vet.Reception.Where(i=>i.IsDelete==false).ToList());
+            animals = new List<Animals>(DbVetClinica.vet.Animals.ToList());
+            receptions = new ObservableCollection<Reception>(DbVetClinica.vet.Reception.Where(i => i.IsDelete == false).ToList());
             this.DataContext = this;
             FiltrDate.ItemsSource = receptions
           .Select(r => r.Date_admission)
           .Distinct()
           .OrderBy(d => d)
           .ToList();
+            if (CurrentUser.Doctor == null)
+            {
+                MessageBox.Show("Доступ запрещен. Требуется авторизация.");
+                NavigationService.Navigate(new Avtorization());
+                return;
+            }
+
+            // Загрузка данных
+            
+            DisplayDoctorInfo();
         }
-      
+        private void DisplayDoctorInfo()
+        {
+            if (CurrentUser.Doctor != null)
+            {
+                doctorInfoTb.Text = $"Врач: {CurrentUser.Doctor.LastName} {CurrentUser.Doctor.Name[0]}. {CurrentUser.Doctor.SerName[0]}.";
+            }
+        }
         private void FiltrDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -58,9 +78,9 @@ namespace MyClinic.Pages
 
         private void AddPriem_Click(object sender, RoutedEventArgs e)
         {
-           AddPriem addPriem = new AddPriem();
+            AddPriem addPriem = new AddPriem();
             addPriem.Show();
-            
+
         }
 
         private void TicketSearchTb_TextChanged(object sender, TextChangedEventArgs e)
@@ -72,14 +92,11 @@ namespace MyClinic.Pages
                 DoctorsLv.ItemsSource = receptions.Where(i => i.Animals.clinic.ToString() == search).ToList();
         }
 
-        
+
         private void UpdatePriem_Click(object sender, RoutedEventArgs e)
         {
-            
-            receptions = DbVetClinica.vet.Reception.Where(i => i.IsDelete == false).ToList();
-            DoctorsLv.ItemsSource = receptions;
-            
-            
+
+            DoctorsLv.ItemsSource = new List<Reception>(DbVetClinica.vet.Reception.Where(i => i.IsDelete == false).ToList());
 
         }
 
@@ -103,7 +120,7 @@ namespace MyClinic.Pages
                     // Обновляем список
                     UpdatePriem_Click(null, null);
 
-                  
+
 
                     MessageBox.Show("Удаление отменено. Прием восстановлен.");
                 }
@@ -141,10 +158,6 @@ namespace MyClinic.Pages
                         // Обновляем список
                         UpdatePriem_Click(null, null);
 
-                        // Показываем кнопку восстановления
-                        DPriem.Visibility = Visibility.Visible;
-
-                        MessageBox.Show("Прием успешно удален. Вы можете восстановить его.");
                     }
                     catch (Exception ex)
                     {
@@ -156,6 +169,52 @@ namespace MyClinic.Pages
             {
                 MessageBox.Show("Выберите прием для удаления!");
             }
+        }
+
+        private void Vh_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(new Avtorization());
+        }
+
+
+
+        private void RedPriem_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (DoctorsLv.SelectedItem is Reception selectedReception)
+            {
+                var editWindows = new EditPriem(selectedReception);
+               
+                if (editWindows.ShowDialog() == true)
+                {
+                    // Полностью перезагружаем данные из базы
+                    receptions = new ObservableCollection<Reception>(
+                        DbVetClinica.vet.Reception
+                            .Include(r => r.Animals)
+                            .Where(i => i.IsDelete == false)
+                            .ToList());
+                    DoctorsLv.ItemsSource = receptions;
+                    // Обновляем ListView
+                    //DoctorsLv.ItemsSource = receptions;
+
+                    // Обновляем фильтры, если они активны
+                    if (FiltrDate.SelectedItem != null)
+                        FiltrDate_SelectionChanged(null, null);
+                    if (!string.IsNullOrWhiteSpace(TicketSearchTb.Text))
+                        TicketSearchTb_TextChanged(null, null);
+
+                    MessageBox.Show("Прием успешно изменен");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите прием для редактирования");
+            }
+        }
+
+        private void GivPriem_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Anim());
         }
     }
 }

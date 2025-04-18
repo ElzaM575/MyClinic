@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyClinic.Windows"
         mc:Ignorable="d"
-        Title="AddPriem" Height="450" Width="800">
+        Title="AddPriem" Height="450" Width="800" Background="#CCCCFF">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -26,7 +26,7 @@
         <TextBlock Text="Дата приема"
             Grid.ColumnSpan="1"
             Grid.Row="0"
-            FontSize="18"
+            FontSize="20"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="0 0 5 0"/>
@@ -76,20 +76,21 @@ Margin="0,10,68,0"/>
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Grid.Row="7"
-                
+                 Background="#F0F8FF"
                 FontSize="18" Click="SavePriemBtn_Click"/>
         <Button x:Name="AddClBtn"
-         Content="добавить жиотное"
+         Content="Добавить животное"
        Margin="142,10,39,10"
          Grid.Column="0"
-         
+          Background="#F0F8FF"
          Grid.Row="4"
+                 
          FontSize="18" Click="AddClBtn_Click" Grid.ColumnSpan="2" />
         <Button x:Name="UddClBtn"
   Content="Обновить"
 Margin="35,10,146,10"
   Grid.Column="2"
-  
+   Background="#F0F8FF"
   Grid.Row="4"
   FontSize="18" Click="UddClBtn_Click" Grid.ColumnSpan="2" />
     </Grid>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="MyClinic.Windows.EditPriem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyClinic.Windows"
+        mc:Ignorable="d"
+        Title="EditPriem" Height="450" Width="800" Background="#CCCCFF">
+    <Grid>
+      
+                <StackPanel>
+                    <Label Content="Дата приема:" FontSize="30"/>
+                    <DatePicker x:Name="DatePicker" Margin="0 0 0 10"/>
+
+            <Label Content="Кличка животного:" FontSize="30"/>
+                    <TextBox x:Name="ClinicTb" Margin="0 0 0 10" Height="30"/>
+
+            <Label Content="Комментарий:" FontSize="30"/>
+                    <TextBox x:Name="CommentTb" Height="60" Margin="0 0 0 20"
+                     TextWrapping="Wrap" AcceptsReturn="True" />
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Сохранить" Background="Aqua" FontSize="20" Width="100" Height="30" Margin="0 0 10 0" Click="Button_Click"/>
+                         
+                    </StackPanel>
+                </StackPanel>
+           
+    </Grid>
+</Window>

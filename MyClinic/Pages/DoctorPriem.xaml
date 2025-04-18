@@ -23,16 +23,27 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-
-
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+           
         </Grid.RowDefinitions>
-        <ListView Grid.RowSpan="4"
+        <Border Grid.Row="0" Background="#B0E0E6" Padding="10" Grid.ColumnSpan="2" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="doctorInfoTb" 
+                       Foreground="White"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <ListView Grid.RowSpan="6"
                   Grid.Column="0"
-                  Grid.Row="2"
-                  Grid.ColumnSpan="5"
+                  Grid.Row="3"
+                  Grid.ColumnSpan="4"
                   Name="DoctorsLv"
                   ItemsSource="{Binding receptions}">
             <ListView.View>
@@ -73,29 +84,15 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox
-            Grid.Column="0"
-                 Grid.ColumnSpan="2"
-                 Height="40"
-                 Width="200"
-                 Name="TicketSearchTb"
-                 VerticalAlignment="Bottom"
-            Padding="0 0 5 0 "
-                Margin="10" TextChanged="TicketSearchTb_TextChanged" Grid.Row="1" />
-        <TextBlock Text="Поиск животного по кличке"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Padding=" 0 0 5 0"
-                   Margin=" 10 10 0 0"/>
+       
+       
         <TextBlock Text="Фильтрация по дате"
             Grid.Column="4"
+                   FontSize="15"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
@@ -119,36 +116,56 @@
         <Button Content="Сбросить фильтр"
             Grid.Column="3"
             Grid.ColumnSpan="1"
-            Margin="10,10,10,10"
+            Margin="5"
+              Background="#B0E0E6"
             Click="ResetFilter_Click" Grid.Row="1"/>
         <Button x:Name="AddPriem"
                 Content="Создать новый прием"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="10"
-                Grid.Row="7" Click="AddPriem_Click"
+                Grid.Column="4"
+                Height="25"
+                Background="#F0F8FF"
+                Margin="5"
+                Grid.Row="4" Click="AddPriem_Click"
              />
+        <Button x:Name="GivPriem"
+         Content="Список животных"
+         Grid.Column="4"
+         Height="25"
+         Background="#F0F8FF"
+         Margin="5"
+         Grid.Row="3" Click="GivPriem_Click" 
+      />
         <Button x:Name="UpPriem"
-          Content="обновить список приемов"
-          Grid.Column="0"
-          Grid.ColumnSpan="2"
-          Margin="10"
+          Content="обновить приемы"
+          Grid.Column="4"
+          Grid.ColumnSpan="1"
+          Margin="5"
+                 Background="#F0F8FF"
           Grid.Row="8" Click="UpdatePriem_Click"
        />
-
-        <Button x:Name="DPriem"
-    Content="Восстановить прием"
-    Grid.Column="3"
+       
+        <Button x:Name="RedPriem"
+    Content="Редактировать прием"
+    Grid.Column="4"
     Grid.ColumnSpan="1"
-    Margin="10,5,10,15"
-    Grid.Row="7" Click="DPriem_Click" 
+    Margin="5"
+                 Background="#F0F8FF"
+    Grid.Row="7" Click="RedPriem_Click_1"
  />
         <Button x:Name="Upriem"
    Content="Удалить прием"
-   Grid.Column="2"
+   Grid.Column="4"
    Grid.ColumnSpan="1"
-   Margin="10,5,10,15"
-   Grid.Row="7" Click="Upriem_Click" 
+   Margin="5"
+                 Background="#F0F8FF"
+   Grid.Row="6" Click="Upriem_Click" 
+/>
+        <Button x:Name="Vh"
+   Content="выход"
+   Grid.Column="0"
+   Grid.ColumnSpan="1"
+   Margin="5"
+   Grid.Row="9" Click="Vh_Click"
 />
     </Grid>
 </Page>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,16 +25,65 @@ namespace MyClinic.Pages
         public Avtorization()
         {
             InitializeComponent();
-        }
+            InitializeComponent();
 
+        }
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DoctorPriem());
+            string login = loginTb.Text.Trim();
+            string password = passwordTb.Password;
+
+            // Валидация ввода
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                ShowError("Введите ID врача и пароль");
+                return;
+            }
+
+            if (!int.TryParse(login, out int doctorId))
+            {
+                ShowError("ID врача должен быть числом");
+                return;
+            }
+            try
+            {
+                using (var vet = new VetClinicaEntities())
+                {
+              
+
+                    //  Если пароля нет в БД
+                    var doctor = vet.Doctor.FirstOrDefault(d => d.Id == doctorId);
+
+                    if (doctor != null)
+                    {
+                        CurrentUser.Doctor = doctor;
+                        NavigationService.Navigate(new DoctorPriem());
+                    }
+                    else
+                    {
+                        ShowError("Врач с указанным ID не найден");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError($"Ошибка подключения: {ex.Message}");
+            }
+        }
+        // Проверка, что вводится только число (для ID врача)
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void ZarBtn_Click(object sender, RoutedEventArgs e)
+        private void ShowError(string message)
         {
-          
+            errorTb.Text = message;
+            errorTb.Visibility = Visibility.Visible;
         }
     }
-}
+    }
+
+    
+

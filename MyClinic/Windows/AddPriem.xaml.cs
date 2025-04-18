@@ -44,7 +44,7 @@ namespace MyClinic.Windows
             }
             else
             {
-                MessageBox.Show("Выберите животное!");
+                MessageBox.Show("Забыла,выберать животное!");
                 return;
             }
             res.Comment = KomTb.Text.Trim();
@@ -52,7 +52,7 @@ namespace MyClinic.Windows
             DbVetClinica.vet.Reception.Add(res);
             DbVetClinica.vet.SaveChanges();
        
-            MessageBox.Show("Прием успешно добавлен.");
+            MessageBox.Show("Молодец,прием успешно добавлен.");
             Close();
         }
 

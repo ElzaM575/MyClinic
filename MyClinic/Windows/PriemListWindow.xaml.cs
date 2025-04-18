@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace MyClinic.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для EditPriemBtn.xaml
+    /// Логика взаимодействия для PriemListWindow.xaml
     /// </summary>
-    public partial class EditPriemBtn : Window
+    public partial class PriemListWindow : Window
     {
-        public EditPriemBtn()
+        public PriemListWindow()
         {
             InitializeComponent();
         }
