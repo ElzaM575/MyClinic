@@ -1,0 +1,254 @@
+USE [VetClinica]
+GO
+/****** Object:  Table [dbo].[Animals]    Script Date: 19.04.2025 14:09:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Animals](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[clinic] [nvarchar](50) NULL,
+	[Id_Gender] [int] NULL,
+	[Id_TypeG] [int] NULL,
+	[Whole] [nvarchar](50) NULL,
+	[Height] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Animals] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Doctor]    Script Date: 19.04.2025 14:09:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Doctor](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[SerName] [nvarchar](50) NULL,
+	[LastName] [nvarchar](50) NULL,
+	[IdType] [int] NULL,
+ CONSTRAINT [PK_Doctor] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Gender]    Script Date: 19.04.2025 14:09:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Gender](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Gender] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Reception]    Script Date: 19.04.2025 14:09:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Reception](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Id_Animal] [int] NULL,
+	[Id_Doctor] [int] NULL,
+	[Date_admission] [date] NULL,
+	[Comment] [nvarchar](50) NULL,
+	[IsDelete] [bit] NULL,
+ CONSTRAINT [PK_Reception] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Type_Animals]    Script Date: 19.04.2025 14:09:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Type_Animals](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Type_Animals] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Type_Doctor]    Script Date: 19.04.2025 14:09:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Type_Doctor](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Type_Doctor] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Animals] ON 
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (1, N'Мурзик', 1, 1, N'29', N'50')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (2, N'яна', 2, 1, N'40', N'45')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (3, N'Жучка', 1, 2, N'30', N'30')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (4, N'Лика', 2, 2, N'50', N'60')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (5, N'Милли', 1, 3, N'50', N'25')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (6, N'Морж', 1, 6, N'Полный', N'50')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (7, N'Рая', 1, 5, N'40', N'67')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (8, N'Рия', 1, 3, N'40', N'78')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (9, N'Беззубик', 2, 9, N'Полный', N'150')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (10, N'Рыжик', 1, 7, N'10', N'45')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (11, N'рим', 1, 4, N'50', N'47')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (12, N'кузя', 2, 2, N'30', N'50')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (13, N'ника', 2, 10, N'20', N'150')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (14, N'радость', 2, 4, N'66', N'50')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (15, N'кривозубик', 2, 1, N'35', N'70')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (16, N'пес', 1, 1, N'65', N'65')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (17, N'мурка', 1, 1, N'54', N'24')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (18, N'Назир', 3, 10, N'56', N'')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (19, N'Лера', 1, 2, N'3', N'180')
+GO
+INSERT [dbo].[Animals] ([Id], [clinic], [Id_Gender], [Id_TypeG], [Whole], [Height]) VALUES (20, N'Котя', 1, 2, N'30', N'30')
+GO
+SET IDENTITY_INSERT [dbo].[Animals] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Doctor] ON 
+GO
+INSERT [dbo].[Doctor] ([Id], [Name], [SerName], [LastName], [IdType]) VALUES (1, N'Александр', N'Иванович', N'Смирнов', 1)
+GO
+INSERT [dbo].[Doctor] ([Id], [Name], [SerName], [LastName], [IdType]) VALUES (2, N'Мария', N'Петровна', N'Кузнецова', 2)
+GO
+INSERT [dbo].[Doctor] ([Id], [Name], [SerName], [LastName], [IdType]) VALUES (3, N'Дмитрий', N'Сергеевич', N'Попов', 1)
+GO
+INSERT [dbo].[Doctor] ([Id], [Name], [SerName], [LastName], [IdType]) VALUES (4, N'Елена', N'Александровна', N'Соколова', 2)
+GO
+INSERT [dbo].[Doctor] ([Id], [Name], [SerName], [LastName], [IdType]) VALUES (5, N'Анна', N'Викторовна', N'Морозова', 1)
+GO
+SET IDENTITY_INSERT [dbo].[Doctor] OFF
+GO
+INSERT [dbo].[Gender] ([Id], [Name]) VALUES (1, N'Мужской')
+GO
+INSERT [dbo].[Gender] ([Id], [Name]) VALUES (2, N'Женский')
+GO
+INSERT [dbo].[Gender] ([Id], [Name]) VALUES (3, N'Неопределенный')
+GO
+SET IDENTITY_INSERT [dbo].[Reception] ON 
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (1, 1, 1, CAST(N'2025-04-03' AS Date), N'Агрессивный, добрый иногда', 0)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (2, 2, 1, CAST(N'2025-03-05' AS Date), N'Больно1', 0)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (3, 3, 1, CAST(N'2025-04-10' AS Date), N'Жалобы на уши', 1)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (4, 4, 2, CAST(N'2025-05-16' AS Date), N'повторный прием', 1)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (5, 18, NULL, CAST(N'2025-04-12' AS Date), N'простуда', 1)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (6, 19, NULL, CAST(N'2025-04-02' AS Date), N'Первичнfz', 1)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (7, 2, NULL, CAST(N'2025-04-06' AS Date), N'больной', 1)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (8, 3, NULL, CAST(N'2025-04-06' AS Date), N',kf ,kf', 1)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (9, 18, NULL, CAST(N'2025-04-30' AS Date), N'энергетический вампир', 0)
+GO
+INSERT [dbo].[Reception] ([Id], [Id_Animal], [Id_Doctor], [Date_admission], [Comment], [IsDelete]) VALUES (10, 20, NULL, CAST(N'2025-04-20' AS Date), N'Вторичный осмотр', 1)
+GO
+SET IDENTITY_INSERT [dbo].[Reception] OFF
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (1, N'Собака')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (2, N'Кошка')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (3, N'Попугай')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (4, N'Кролик')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (5, N'Хомяк')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (6, N'Птица')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (7, N'Рыба')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (8, N'Черепаха')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (9, N'Ящерица')
+GO
+INSERT [dbo].[Type_Animals] ([Id], [Name]) VALUES (10, N'Крыса')
+GO
+SET IDENTITY_INSERT [dbo].[Type_Doctor] ON 
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (1, N'Ветеринар')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (2, N'Хирург-ветеринар')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (3, N'Зоопсихолог')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (4, N'Ветеринарный техник')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (5, N'Ветеринарный стоматолог')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (6, N'Зоолог')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (7, N'Зоонутрициолог')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (8, N'Ветеринарный патологоанатом')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (9, N'Ветеринар-неотложной помощи')
+GO
+INSERT [dbo].[Type_Doctor] ([Id], [Name]) VALUES (10, N'Реабилитатор дикой природы')
+GO
+SET IDENTITY_INSERT [dbo].[Type_Doctor] OFF
+GO
+ALTER TABLE [dbo].[Animals]  WITH CHECK ADD  CONSTRAINT [FK_Animals_Gender] FOREIGN KEY([Id_Gender])
+REFERENCES [dbo].[Gender] ([Id])
+GO
+ALTER TABLE [dbo].[Animals] CHECK CONSTRAINT [FK_Animals_Gender]
+GO
+ALTER TABLE [dbo].[Animals]  WITH CHECK ADD  CONSTRAINT [FK_Animals_Type_Animals] FOREIGN KEY([Id_TypeG])
+REFERENCES [dbo].[Type_Animals] ([Id])
+GO
+ALTER TABLE [dbo].[Animals] CHECK CONSTRAINT [FK_Animals_Type_Animals]
+GO
+ALTER TABLE [dbo].[Doctor]  WITH CHECK ADD  CONSTRAINT [FK_Doctor_Type_Doctor] FOREIGN KEY([IdType])
+REFERENCES [dbo].[Type_Doctor] ([Id])
+GO
+ALTER TABLE [dbo].[Doctor] CHECK CONSTRAINT [FK_Doctor_Type_Doctor]
+GO
+ALTER TABLE [dbo].[Reception]  WITH CHECK ADD  CONSTRAINT [FK_Reception_Animals] FOREIGN KEY([Id_Animal])
+REFERENCES [dbo].[Animals] ([Id])
+GO
+ALTER TABLE [dbo].[Reception] CHECK CONSTRAINT [FK_Reception_Animals]
+GO
+ALTER TABLE [dbo].[Reception]  WITH CHECK ADD  CONSTRAINT [FK_Reception_Doctor] FOREIGN KEY([Id_Doctor])
+REFERENCES [dbo].[Doctor] ([Id])
+GO
+ALTER TABLE [dbo].[Reception] CHECK CONSTRAINT [FK_Reception_Doctor]
+GO
