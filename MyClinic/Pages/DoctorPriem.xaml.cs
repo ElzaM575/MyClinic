@@ -83,14 +83,7 @@ namespace MyClinic.Pages
 
         }
 
-        private void TicketSearchTb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string search = TicketSearchTb.Text.Trim();
-            if (search == " ")
-                DoctorsLv.ItemsSource = receptions.ToList();
-            else
-                DoctorsLv.ItemsSource = receptions.Where(i => i.Animals.clinic.ToString() == search).ToList();
-        }
+  
 
 
         private void UpdatePriem_Click(object sender, RoutedEventArgs e)
@@ -200,8 +193,7 @@ namespace MyClinic.Pages
                     // Обновляем фильтры, если они активны
                     if (FiltrDate.SelectedItem != null)
                         FiltrDate_SelectionChanged(null, null);
-                    if (!string.IsNullOrWhiteSpace(TicketSearchTb.Text))
-                        TicketSearchTb_TextChanged(null, null);
+                    
 
                     MessageBox.Show("Прием успешно изменен");
                 }
