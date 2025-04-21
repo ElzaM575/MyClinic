@@ -39,15 +39,14 @@ namespace MyClinic.Pages
 
         private void TicketSearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string search = TicketSearchTb.Text.Trim().ToLower(); // Приводим к нижнему регистру
+            string search = TicketSearchTb.Text.Trim().ToLower(); 
             if (string.IsNullOrWhiteSpace(search))
             {
-                // Если строка поиска пустая, показываем всех животных
                 AnimLv.ItemsSource = animals;
             }
             else
             {
-                // Ищем по частичному совпадению клички (clinic)
+                
                 AnimLv.ItemsSource = animals
                     .Where(a => a.clinic != null &&
                                 a.clinic.ToLower().Contains(search))

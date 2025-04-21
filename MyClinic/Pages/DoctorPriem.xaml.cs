@@ -109,12 +109,8 @@ namespace MyClinic.Pages
                     // Восстанавливаем прием
                     DbVetClinica.vet.Reception.Add(_lastDeletedReception);
                     DbVetClinica.vet.SaveChanges();
-
                     // Обновляем список
                     UpdatePriem_Click(null, null);
-
-
-
                     MessageBox.Show("Удаление отменено. Прием восстановлен.");
                 }
                 catch (Exception ex)
@@ -133,19 +129,12 @@ namespace MyClinic.Pages
                     "Подтверждение удаления",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
-
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        // Сохраняем удаленный прием для возможного восстановления
                         _lastDeletedReception = selectedReception;
-
-                        // Вариант 1: Мягкое удаление (рекомендуется)
                         selectedReception.IsDelete = true;
-
-                        // Вариант 2: Физическое удаление (раскомментировать если нужно)
-                        // DbVetClinica.vet.Reception.Remove(selectedReception);
 
                         DbVetClinica.vet.SaveChanges();
                         // Обновляем список
@@ -187,10 +176,8 @@ namespace MyClinic.Pages
                             .Where(i => i.IsDelete == false)
                             .ToList());
                     DoctorsLv.ItemsSource = receptions;
-                    // Обновляем ListView
-                    //DoctorsLv.ItemsSource = receptions;
 
-                    // Обновляем фильтры, если они активны
+                 
                     if (FiltrDate.SelectedItem != null)
                         FiltrDate_SelectionChanged(null, null);
                     

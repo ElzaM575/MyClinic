@@ -33,7 +33,7 @@ namespace MyClinic.Pages
             string login = loginTb.Text.Trim();
             string password = passwordTb.Password;
 
-            // Валидация ввода
+           
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 ShowError("Введите ID врача и пароль");
@@ -51,7 +51,7 @@ namespace MyClinic.Pages
                 {
               
 
-                    //  Если пароля нет в БД
+                    
                     var doctor = vet.Doctor.FirstOrDefault(d => d.Id == doctorId);
 
                     if (doctor != null)

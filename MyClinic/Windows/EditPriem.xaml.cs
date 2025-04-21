@@ -28,7 +28,7 @@ namespace MyClinic.Windows
         {
             InitializeComponent();
             reception1= reception;
-            // Загружаем текущий прием из базы
+           
             reception = DbVetClinica.vet.Reception
                 .Include(r => r.Animals)
                 .FirstOrDefault(r => r.Id == reception.Id);
@@ -52,7 +52,7 @@ namespace MyClinic.Windows
             }
             try
             {
-                // Обновляем данные
+               
                 reception1.Date_admission = DatePicker.SelectedDate.Value;
 
                 if (reception1.Animals != null)
@@ -61,12 +61,12 @@ namespace MyClinic.Windows
                 }
                 else
                 {
-                    // Если животное не было привязано, создаем новое
+                    
                     reception1.Animals = new Animals { clinic = ClinicTb.Text };
                 }
 
                 reception1.Comment = CommentTb.Text;
-                // Сохраняем изменения
+               
                 DbVetClinica.vet.SaveChanges();
 
                 this.DialogResult = true;

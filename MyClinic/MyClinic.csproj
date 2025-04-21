@@ -119,9 +119,6 @@
     <Compile Include="Windows\EditPriem.xaml.cs">
       <DependentUpon>EditPriem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\PriemListWindow.xaml.cs">
-      <DependentUpon>PriemListWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,10 +153,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EditPriem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\PriemListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
